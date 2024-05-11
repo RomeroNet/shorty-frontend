@@ -16,6 +16,8 @@
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    width: 80%;
+    margin: 0 auto;
 
     main {
       flex-grow: 1;

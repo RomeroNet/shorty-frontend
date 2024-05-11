@@ -1,7 +1,3 @@
-<script setup>
-import NavigationBar from "~/components/NavigationBar.vue";
-</script>
-
 <template>
   <header>
     <div class="title">
@@ -16,7 +12,7 @@ import NavigationBar from "~/components/NavigationBar.vue";
 <style scoped>
   header {
     display: flex;
-    width: 100vw;
+    width: 100%;
     padding: 1% 0.5%;
     background-color: rgb(213 252 255);
 
