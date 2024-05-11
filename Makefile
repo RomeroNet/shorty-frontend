@@ -1,5 +1,5 @@
 start-dev:
-	docker run --rm -it -v ${PWD}:/app -w /app -p 3000:3000 -p 24678:24678 node:latest yarn dev --host
+	docker-compose run --service-ports --rm -it node pnpm dev --host
 
 shell:
-	docker run --rm -it -v ${PWD}:/app -w /app -p 3000:3000 -p 24678:24678 node:latest /bin/bash
+	docker-compose run --service-ports --rm -it node /bin/bash

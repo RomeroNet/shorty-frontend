@@ -1,4 +1,5 @@
 <script setup>
+import NavigationBar from "~/components/NavigationBar.vue";
 </script>
 
 <template>
@@ -16,10 +17,10 @@
   header {
     display: flex;
     width: 100vw;
+    padding: 1% 0.5%;
     background-color: rgb(213 252 255);
 
     .title {
-      margin: 0.5%;
       flex: 0 0 auto;
 
       .main-title {

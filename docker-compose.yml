@@ -1,0 +1,11 @@
+services:
+  node:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    ports:
+      - "3000:3000"
+      - "24678:24678"
+    volumes:
+      - .:/app
+    user: 1000:1000
