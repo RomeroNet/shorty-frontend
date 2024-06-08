@@ -9,3 +9,5 @@ services:
     volumes:
       - .:/app
     user: 1000:1000
+    environment:
+      - API_BASE=http://localhost:8080/api

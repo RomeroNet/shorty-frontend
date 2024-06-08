@@ -1,12 +1,12 @@
 <script setup lang="ts">
-  const currentYear = new Date().getFullYear();
+  const currentYear = GetCurrentYear();
 </script>
 
 <template>
   <footer>
     <div class="footer">
-      <p>Made with ❤️ from Málaga, Spain</p>
-      <p>RomeroNet, 2023 - {{ currentYear }}</p>
+      <p data-test="first-paragraph">Made with ❤️ from Málaga, Spain</p>
+      <p data-test="second-paragraph">RomeroNet, 2023 - {{ currentYear }}</p>
     </div>
   </footer>
 </template>

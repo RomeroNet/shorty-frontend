@@ -2,6 +2,7 @@
 </script>
 
 <template>
+  <GenerateLinkForm />
 </template>
 
 <style scoped>

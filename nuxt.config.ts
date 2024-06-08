@@ -5,5 +5,10 @@ export default defineNuxtConfig({
       'normalize.css/normalize.css',
       '@/assets/scss/fonts.scss',
       '@/assets/scss/default.scss'
-  ]
+  ],
+  runtimeConfig: {
+    public: {
+      apiBase: process.env.API_BASE
+    }
+  }
 })
