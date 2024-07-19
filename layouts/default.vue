@@ -20,6 +20,8 @@
     margin: 0 auto;
 
     main {
+      display: flex;
+      justify-content: center;
       flex-grow: 1;
     }
   }
