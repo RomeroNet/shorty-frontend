@@ -1,0 +1,13 @@
+sha: image-sha
+
+web:
+  name: shorty-frontend-web
+  replicas: 1
+  servicePort: 80
+  container:
+    image: ghcr.io/romeronet/shorty-frontend/web
+    port: 3000
+  ingress:
+    host: dev-shorty.romeronet.es
+    tlsSecret: shorty-frontend-tls
+    path: /
