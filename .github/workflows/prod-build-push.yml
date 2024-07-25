@@ -3,7 +3,7 @@ name: Build and push dev images
 on:
   push:
     branches:
-      - develop
+      - main
   workflow_dispatch:
 
 permissions:
@@ -47,19 +47,20 @@ jobs:
     needs: build-frontend
 
     steps:
-        - name: Checkout code
-          uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-        - name: Set up kubectl
-          uses: azure/setup-kubectl@v4
+      - name: Set up kubectl
+        uses: azure/setup-kubectl@v4
 
-        - name: Set up helm
-          uses: azure/setup-helm@v4
+      - name: Set up helm
+        uses: azure/setup-helm@v4
 
-        - name: Set up kubeconfig
-          run: mkdir -p ~/.kube && echo "${{ secrets.KUBECTL_CONTENT }}" > ~/.kube/config
+      - name: Set up kubeconfig
+        run: mkdir -p ~/.kube && echo "${{ secrets.KUBECTL_CONTENT }}" > ~/.kube/config
 
-        - name: Deploy to Kubernetes
-          run: |
-            helm upgrade --install -n shorty-dev shorty-frontend helm \
-              --set sha=${{ github.sha }}
+      - name: Deploy to Kubernetes
+        run: |
+          helm upgrade --install -n shorty-prod shorty-frontend helm \
+            --set web.ingress.host=shorty.romeronet.es \
+            --set sha=${{ github.sha }}
