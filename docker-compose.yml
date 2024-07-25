@@ -2,7 +2,7 @@ services:
   node:
     build:
       context: .
-      dockerfile: docker/Dockerfile
+      dockerfile: docker/dev/web/Dockerfile
     ports:
       - "3000:3000"
       - "24678:24678"
