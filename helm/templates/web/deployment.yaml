@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.web.name }}
+  labels:
+    app: {{ .Values.web.name }}
+spec:
+  selector:
+    matchLabels:
+      app: {{ .Values.web.name }}
+  replicas: {{ .Values.web.replicas }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.web.name }}
+    spec:
+      containers:
+        - name: {{ .Values.web.name }}
+          image: {{ .Values.web.container.image }}:{{.Values.sha }}
+          imagePullPolicy: Always
+          ports:
+            - containerPort: {{ .Values.web.container.port }}
+          securityContext:
+            runAsUser: 1000
+            runAsGroup: 1000
