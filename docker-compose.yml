@@ -10,4 +10,4 @@ services:
       - .:/app
     user: 1000:1000
     environment:
-      - API_BASE=http://localhost:8080/api
+      - NUXT_PUBLIC_API_BASE=http://localhost:8080/api

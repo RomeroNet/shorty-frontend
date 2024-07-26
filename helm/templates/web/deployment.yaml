@@ -21,7 +21,7 @@ spec:
           ports:
             - containerPort: {{ .Values.web.container.port }}
           env:
-            - name: API_BASE
+            - name: NUXT_PUBLIC_API_BASE
               value: {{ .Values.web.container.env.apiBase }}
           securityContext:
             runAsUser: 1000
