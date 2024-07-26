@@ -7,6 +7,8 @@ web:
   container:
     image: ghcr.io/romeronet/shorty-frontend/web
     port: 3000
+    env:
+      apiBase: https://dev-shorty.romeronet.es/api
   ingress:
     host: dev-shorty.romeronet.es
     tlsSecret: shorty-frontend-tls

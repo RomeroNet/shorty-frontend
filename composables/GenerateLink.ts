@@ -1,11 +1,6 @@
 export const GenerateLink = async (request: GenerateLinkRequest): Promise<string> => {
-    const config = useRuntimeConfig();
-    const createLinkUrl = `${config.public.apiBase}/url`;
-
-    return await $fetch(createLinkUrl, {
-        method: 'POST',
-        body: request
-    });
+    const data = await ApiCreateLink(request);
+    return data.origin;
 }
 
 export interface GenerateLinkRequest {

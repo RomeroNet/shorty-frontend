@@ -1,11 +1,9 @@
 <script setup lang="ts">
   const link = ref<string>('');
   const buttonDisabled = ref<boolean>(true);
-  const origin = GenerateOrigin();
+  const shortenedLink = ref<string>('');
 
-  watch(link, (newValue) => {
-    buttonDisabled.value = newValue.length <= 0;
-  });
+  const origin = GenerateOrigin();
 
   const generateLink = async (event: Event) => {
     event.preventDefault();
@@ -17,35 +15,45 @@
       destination: link.value
     });
 
-    console.log(result);
+    shortenedLink.value = result;
   }
 </script>
 
 <template>
-<form>
-<!--  <label for="url">URL</label>-->
-  <input
-      type="text"
-      id="url"
-      name="url"
-      required
-      v-model="link"
-  />
-  <button
-      @click="generateLink"
-      type="submit"
-      :class="{ disabled: buttonDisabled }"
-  >Shorty!</button>
-</form>
+  <div>
+    <form>
+      <input
+          type="text"
+          id="url"
+          name="url"
+          required
+          v-model="link"
+      />
+      <button
+          @click="generateLink"
+          type="submit"
+          :class="{ disabled: link.length <= 0 }"
+      >Shorty!</button>
+    </form>
+
+    <p
+        :class="{ hidden: shortenedLink.length <= 0 }"
+    >Your link is: https://shorty.es/{{ shortenedLink }}</p>
+  </div>
 </template>
 
 <style scoped>
+div {
+  display: flex;
+  flex-direction: column;
+
   form {
     border: 3px solid rgb(25, 238, 255);
     border-radius: 10px;
     overflow: hidden;
     display: flex;
     flex-direction: row;
+    flex-grow: 1;
     width: 30vw;
     max-height: 10vh;
     margin-top: 15vh;
@@ -82,4 +90,14 @@
       }
     }
   }
+
+  p {
+    text-align: center;
+
+    &.hidden {
+      display: none;
+    }
+  }
+}
+
 </style>

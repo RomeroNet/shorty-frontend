@@ -63,4 +63,5 @@ jobs:
         run: |
           helm upgrade --install -n shorty-prod shorty-frontend helm \
             --set web.ingress.host=shorty.romeronet.es \
+            --set web.container.env.apiBase=https://shorty.romeronet.es/api \
             --set sha=${{ github.sha }}
