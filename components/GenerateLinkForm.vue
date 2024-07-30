@@ -3,6 +3,8 @@
   const buttonDisabled = ref<boolean>(true);
   const shortenedLink = ref<string>('');
 
+  const host = useRequestURL().hostname;
+
   const origin = GenerateOrigin();
 
   const generateLink = async (event: Event) => {
@@ -10,12 +12,10 @@
 
     buttonDisabled.value = true;
 
-    const result = await GenerateLink({
+    shortenedLink.value = await GenerateLink({
       origin: origin,
       destination: link.value
     });
-
-    shortenedLink.value = result;
   }
 </script>
 
@@ -38,7 +38,7 @@
 
     <p
         :class="{ hidden: shortenedLink.length <= 0 }"
-    >Your link is: https://shorty.es/{{ shortenedLink }}</p>
+    >Your link is: https://{{ host }}/{{ shortenedLink }}</p>
   </div>
 </template>
 
